@@ -188,7 +188,6 @@ jobs:
         uses: docker/setup-qemu-action@v3
         with:
           platforms: ppc64le 
-    steps:
       - name: Checkout scikit-learn
         uses: actions/checkout@v4
 
