@@ -184,11 +184,10 @@ jobs:
           #   platform_id: macosx_arm64
           #   free_threaded_support: True
     steps:
- 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
         with:
-           platforms: ppc64le 
+          platforms: ppc64le 
     steps:
       - name: Checkout scikit-learn
         uses: actions/checkout@v4
