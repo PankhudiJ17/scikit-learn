@@ -83,7 +83,7 @@ jobs:
             platform_id: win_amd64
             free_threaded_support: True
           # Adding for ppc64le
-          - os: ppc64le
+          - os: ubuntu-latest
             python: 39
             platform_id: manylinux_ppc64le
             manylinux_image: manylinux2014  
