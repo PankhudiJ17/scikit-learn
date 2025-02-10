@@ -10,11 +10,14 @@ on:
   push:
     branches:
       - main
+      - ppc_scikit_learn
       # Release branches
       - "[0-9]+.[0-9]+.X"
+      
   pull_request:
     branches:
       - main
+      - ppc_scikit_learn
       - "[0-9]+.[0-9]+.X"
   # Manual run
   workflow_dispatch:
