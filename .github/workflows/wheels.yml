@@ -10,10 +10,9 @@ on:
   push:
     branches:
       - main
-      - ppc_scikit_learn
       # Release branches
+      - ppc_scikit_learn
       - "[0-9]+.[0-9]+.X"
-      
   pull_request:
     branches:
       - main
@@ -82,26 +81,22 @@ jobs:
             python: 313t
             platform_id: win_amd64
             free_threaded_support: True
-          # Adding for ppc64le
-          - os: ubuntu-latest
-            python: 39
-            platform_id: manylinux_ppc64le
-            manylinux_image: manylinux2014  
+
           # Linux 64 bit manylinux2014
           - os: ubuntu-latest
-            python: 310
+            python: 39
             platform_id: manylinux_x86_64
             manylinux_image: manylinux2014
-
-          - os: ubuntu-latest
-            python: 311
-            platform_id: manylinux_x86_64
-            manylinux_image: manylinux2014  
 
           # NumPy on Python 3.10 only supports 64bit and is only available with manylinux2014
           - os: ubuntu-latest
             python: 310
             platform_id: manylinux_x86_64
+            manylinux_image: manylinux2014
+          
+          - os: ubuntu-latest
+            python: 310
+            platform_id: manylinux_ppc64le
             manylinux_image: manylinux2014
 
           - os: ubuntu-latest
