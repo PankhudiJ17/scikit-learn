@@ -114,9 +114,24 @@ jobs:
 
           #linux-ppc64le  
           - os: ubuntu-latest
-            python: 310
+            python: 39
             platform_id: manylinux_ppc64le
-            manylinux_image: manylinux2014 
+            manylinux_image: manylinux_2_34 
+
+          # - os: ubuntu-latest
+          #   python: 310
+          #   platform_id: manylinux_ppc64le
+          #   manylinux_image: manylinux2014 
+
+          # - os: ubuntu-latest
+          #   python: 311
+          #   platform_id: manylinux_ppc64le
+          #   manylinux_image: manylinux2014 
+
+          # - os: ubuntu-latest
+          #   python: 312
+          #   platform_id: manylinux_ppc64le
+          #   manylinux_image: manylinux2014       
 
           # # Linux 64 bit manylinux2014
           - os: ubuntu-24.04-arm
