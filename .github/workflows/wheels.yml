@@ -133,6 +133,30 @@ jobs:
             platform_id: manylinux_aarch64
             manylinux_image: manylinux2014
 
+          #for pc64le
+          - os: ubuntu-latest #github runner , dnt have for ppc , we use self hosted runner coz we dont hve for ppc
+            python: 39
+            platform_id: manylinux_ppc64le
+            manylinux_image: manylinux_2_28
+          - os: ubuntu-latest
+            python: 310
+            platform_id: manylinux_ppc64le
+            manylinux_image: manylinux_2_28
+          
+          - os: ubuntu-latest
+            python: 311
+            platform_id: manylinux_ppc64le
+            manylinux_image: manylinux_2_28
+          - os: ubuntu-latest
+            python: 312
+            platform_id: manylinux_ppc64le
+            manylinux_image: manylinux_2_28
+          - os: ubuntu-latest
+            python: 313
+            platform_id: manylinux_ppc64le
+            manylinux_image: manylinux_2_28
+
+
           # MacOS x86_64
           - os: macos-13
             python: 39
