@@ -230,8 +230,13 @@ jobs:
 
           CIBW_MANYLINUX_PPC64LE_IMAGE: quay.io/pypa/manylinux_2_28_ppc64le
           CIBW_SKIP: "*-musllinux_ppc64le"
-          CIBW_BEFORE_BUILD: "yum install -y epel-release gcc gcc-c++ gcc-gfortran git wget pkgconfig cmake && wget https://ftp2.osuosl.org/pub/ppc64el/openblas/Openblas_0.3.29_ppc64le.tar.gz && tar -xvpf Openblas_0.3.29_ppc64le.tar.gz -C /usr/local && export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig"
-
+          #CIBW_BEFORE_BUILD: "yum install -y epel-release gcc gcc-c++ gcc-gfortran git wget pkgconfig cmake && wget https://ftp2.osuosl.org/pub/ppc64el/openblas/Openblas_0.3.29_ppc64le.tar.gz && tar -xvpf Openblas_0.3.29_ppc64le.tar.gz -C /usr/local && export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig"
+          CIBW_BEFORE_BUILD: |
+            yum install -y epel-release gcc gcc-c++ gcc-gfortran git wget pkgconfig cmake && \
+            wget https://ftp2.osuosl.org/pub/ppc64el/openblas/Openblas_0.3.29_ppc64le.tar.gz && \
+            tar -xvpf Openblas_0.3.29_ppc64le.tar.gz -C /usr/local && \
+            export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig && \
+            bash {project}/build_tools/wheels/cibw_before_build.sh {project}
 
           CIBW_CONFIG_SETTINGS_WINDOWS: "setup-args=--vsenv"
           CIBW_REPAIR_WHEEL_COMMAND_WINDOWS: bash build_tools/github/repair_windows_wheels.sh {wheel} {dest_dir}
