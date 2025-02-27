@@ -14,4 +14,6 @@ if [[ "$GITHUB_EVENT_NAME" == schedule ||
       "$COMMIT_MSG" =~ \[cd\ build\] ||
       "$GITHUB_REF" == "refs/heads/main" ]]; then
     echo "build=true" >> $GITHUB_OUTPUT
+else
+    echo "build=false" >> $GITHUB_OUTPUT  # Optional: Output 'false' for debugging
 fi
