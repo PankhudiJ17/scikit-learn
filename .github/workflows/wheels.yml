@@ -200,6 +200,10 @@ jobs:
             free_threaded_support: True
 
     steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+        with:
+          platforms: ppc64le 
       - name: Checkout scikit-learn
         uses: actions/checkout@v4
 
@@ -223,9 +227,15 @@ jobs:
           # Needed on Windows CI to compile with Visual Studio compiler
           # otherwise Meson detects a MINGW64 platform and use MINGW64
           # toolchain
+
+          CIBW_MANYLINUX_PPC64LE_IMAGE: quay.io/pypa/manylinux_2_28_ppc64le
+          CIBW_SKIP: "*-musllinux_ppc64le"
+          CIBW_BEFORE_BUILD: "yum install -y epel-release gcc gcc-c++ gcc-gfortran git wget pkgconfig cmake && wget https://ftp2.osuosl.org/pub/ppc64el/openblas/Openblas_0.3.29_ppc64le.tar.gz && tar -xvpf Openblas_0.3.29_ppc64le.tar.gz -C /usr/local && export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig"
+
+
           CIBW_CONFIG_SETTINGS_WINDOWS: "setup-args=--vsenv"
           CIBW_REPAIR_WHEEL_COMMAND_WINDOWS: bash build_tools/github/repair_windows_wheels.sh {wheel} {dest_dir}
-          CIBW_BEFORE_BUILD: bash {project}/build_tools/wheels/cibw_before_build.sh {project}
+          #CIBW_BEFORE_BUILD: bash {project}/build_tools/wheels/cibw_before_build.sh {project}
           CIBW_BEFORE_TEST_WINDOWS: bash build_tools/github/build_minimal_windows_image.sh ${{ matrix.python }}
           CIBW_BEFORE_TEST: bash {project}/build_tools/wheels/cibw_before_test.sh
           CIBW_ENVIRONMENT_PASS_LINUX: RUNNER_OS
