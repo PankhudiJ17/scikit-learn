@@ -134,24 +134,24 @@ jobs:
             manylinux_image: manylinux2014
 
           #for pc64le
-          - os: ubuntu-latest #github runner , dnt have for ppc , we use self hosted runner coz we dont hve for ppc
+          - os: linux.ppc64le #github runner , dnt have for ppc , we use self hosted runner coz we dont hve for ppc
             python: 39
             platform_id: manylinux_ppc64le
             manylinux_image: manylinux_2_28
-          - os: ubuntu-latest
+          - os: linux.ppc64le
             python: 310
             platform_id: manylinux_ppc64le
             manylinux_image: manylinux_2_28
           
-          - os: ubuntu-latest
+          - os: linux.ppc64le
             python: 311
             platform_id: manylinux_ppc64le
             manylinux_image: manylinux_2_28
-          - os: ubuntu-latest
+          - os: linux.ppc64le
             python: 312
             platform_id: manylinux_ppc64le
             manylinux_image: manylinux_2_28
-          - os: ubuntu-latest
+          - os: linux.ppc64le
             python: 313
             platform_id: manylinux_ppc64le
             manylinux_image: manylinux_2_28
@@ -200,10 +200,10 @@ jobs:
             free_threaded_support: True
 
     steps:
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-        with:
-          platforms: ppc64le 
+      #- name: Set up QEMU
+      #  uses: docker/setup-qemu-action@v3
+      #  with:
+      #    platforms: ppc64le 
       - name: Checkout scikit-learn
         uses: actions/checkout@v4
 
