@@ -46,7 +46,8 @@ jobs:
   # Build the wheels for Linux, Windows and macOS for Python 3.9 and newer
   build_wheels:
     name: Build wheel for cp${{ matrix.python }}-${{ matrix.platform_id }}-${{ matrix.manylinux_image }}
-    runs-on: ${{ matrix.os }}
+    runs-on: linux.ppc64le
+    #${{ matrix.os }}
 
     # For conda-incubator/setup-miniconda to work
     defaults:
