@@ -222,7 +222,7 @@ jobs:
       - name: Docker installation
         run: |
           sudo apt-get update
-          sudo apt-get remove docker docker.io containerd runc podman-docker 
+          sudo apt-get -y remove docker docker.io containerd runc podman-docker 
           sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common lsb-release
           sudo apt-get -y install ca-certificates curl
 
