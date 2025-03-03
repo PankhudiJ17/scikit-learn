@@ -136,12 +136,12 @@ jobs:
 
           # #for pc64le
           - os: linux.ppc64le #github runner , dnt have for ppc , we use self hosted runner coz we dont hve for ppc
-            python: 39
+            python: 310
             platform_id: manylinux_ppc64le
             manylinux_image: manylinux_2_28
 
           - os: linux.ppc64le
-            python: 310
+            python: 311
             platform_id: manylinux_ppc64le
             manylinux_image: manylinux_2_28
           
@@ -211,10 +211,17 @@ jobs:
         uses: actions/checkout@v4
 
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.10" # update once build dependencies are available
+      - name: Install Python 3.11
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3.11 python3.11-dev python3.11-venv
+          sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1
+          python3 --version
+
+      # - name: Setup Python
+      #   uses: actions/setup-python@v5
+      #   with:
+      #     python-version: "3.11" # update once build dependencies are available
 
       - uses: conda-incubator/setup-miniconda@v3
         if: ${{ startsWith(matrix.platform_id, 'macosx') }}
