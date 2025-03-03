@@ -221,7 +221,7 @@ jobs:
 
       - name: Docker installation
         run: |
-          for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
+          for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get -y remove $pkg; done
           sudo apt-get update
           sudo apt-get -y remove docker docker.io containerd runc podman-docker 
           sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common lsb-release
