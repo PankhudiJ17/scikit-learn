@@ -140,10 +140,10 @@ jobs:
             platform_id: manylinux_ppc64le
             manylinux_image: manylinux_2_28
 
-          - os: linux.ppc64le
-            python: 311
-            platform_id: manylinux_ppc64le
-            manylinux_image: manylinux_2_28
+          # - os: linux.ppc64le
+          #   python: 311
+          #   platform_id: manylinux_ppc64le
+          #   manylinux_image: manylinux_2_28
           
           # - os: linux.ppc64le
           #   python: 311
