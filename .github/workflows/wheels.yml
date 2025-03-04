@@ -270,8 +270,8 @@ jobs:
 
       - name: Build and test wheels
         env:
-          CIBW_CONTAINER_ENGINE: podman
-          CIBW_CONTAINER_PRIVILEGED: true
+          #CIBW_CONTAINER_ENGINE: podman
+          #CIBW_CONTAINER_PRIVILEGED: true
           CIBW_PRERELEASE_PYTHONS: ${{ matrix.prerelease_pythons }}
           CIBW_FREE_THREADED_SUPPORT: ${{ matrix.free_threaded_support }}
           CIBW_ENVIRONMENT: SKLEARN_SKIP_NETWORK_TESTS=1
