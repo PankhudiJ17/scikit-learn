@@ -219,7 +219,7 @@ jobs:
           python3 --version
           # docker --version
           # cat /etc/os-release
-          find / -name *openblas.so*
+          find / -name *openblas*
       # - name: Docker installation
       #   run: |
       #     for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get -y remove $pkg; done
