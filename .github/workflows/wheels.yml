@@ -219,7 +219,7 @@ jobs:
           python3 --version
           # docker --version
           # cat /etc/os-release
-          sudo find / -name *openblas*
+          #sudo find / -name *openblas*
       # - name: Docker installation
       #   run: |
       #     for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get -y remove $pkg; done
@@ -310,6 +310,10 @@ jobs:
 
         run: bash build_tools/wheels/build_wheels.sh
 
+      - name: openblas
+        run: |
+          sudo find / -name *openblas*
+          
       - name: Store artifacts
         uses: actions/upload-artifact@v4
         with:
