@@ -297,7 +297,12 @@ jobs:
           CIBW_REPAIR_WHEEL_COMMAND_WINDOWS: bash build_tools/github/repair_windows_wheels.sh {wheel} {dest_dir}
           #CIBW_BEFORE_BUILD: bash {project}/build_tools/wheels/cibw_before_build.sh {project}
           CIBW_BEFORE_TEST_WINDOWS: bash build_tools/github/build_minimal_windows_image.sh ${{ matrix.python }}
-          CIBW_BEFORE_TEST: bash {project}/build_tools/wheels/cibw_before_test.sh
+          CIBW_BEFORE_TEST: |
+            yum install -y epel-release gcc gcc-c++ gcc-gfortran git wget pkgconfig cmake openssl-devel && \
+            wget https://ftp2.osuosl.org/pub/ppc64el/openblas/Openblas_0.3.29_ppc64le.tar.gz && \
+            tar -xvpf Openblas_0.3.29_ppc64le.tar.gz -C /usr/local && \
+            export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig && \
+            bash {project}/build_tools/wheels/cibw_before_test.sh
           CIBW_ENVIRONMENT_PASS_LINUX: RUNNER_OS
           CIBW_TEST_REQUIRES: pytest pandas
           # On Windows, we use a custom Docker image and CIBW_TEST_REQUIRES_WINDOWS
@@ -313,7 +318,7 @@ jobs:
       - name: openblas
         run: |
           sudo find / -name *openblas*
-          
+
       - name: Store artifacts
         uses: actions/upload-artifact@v4
         with:
