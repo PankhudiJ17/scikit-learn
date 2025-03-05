@@ -271,16 +271,16 @@ jobs:
             echo "before cibw_before_test.sh file"
             bash {project}/build_tools/wheels/cibw_before_test.sh
             echo "Finish"
-          CIBW_ENVIRONMENT_PASS_LINUX: |
-            echo "Before Runner_OS"
-            RUNNER_OS
-            echo "After Runner_OS"
+          CIBW_ENVIRONMENT_PASS_LINUX: RUNNER_OS
+           # echo "Before Runner_OS"
+            
+            #echo "After Runner_OS"
 
             
-          CIBW_TEST_REQUIRES: |
-            echo "Before installing pytest_pandas"
-            pytest pandas
-            echo "installing after pytest_pandas"
+          CIBW_TEST_REQUIRES: pytest pandas
+            #echo "Before installing pytest_pandas"
+            # pytest pandas
+            #echo "installing after pytest_pandas"
           # On Windows, we use a custom Docker image and CIBW_TEST_REQUIRES_WINDOWS
           # does not make sense because it would install dependencies in the host
           # rather than inside the Docker image
