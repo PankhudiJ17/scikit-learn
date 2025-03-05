@@ -136,7 +136,7 @@ jobs:
 
           # #for pc64le
           - os: linux.ppc64le #github runner , dnt have for ppc , we use self hosted runner coz we dont hve for ppc
-            python: 310
+            python: 311
             platform_id: manylinux_ppc64le
             manylinux_image: manylinux_2_28
 
