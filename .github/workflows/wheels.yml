@@ -273,9 +273,9 @@ jobs:
             echo "Finish"
           CIBW_ENVIRONMENT_PASS_LINUX: RUNNER_OS
 
-          echo "Pytest pandas"
+            echo "Pytest pandas"
           CIBW_TEST_REQUIRES: pytest pandas
-          echo "after pytest pandas"
+            echo "after pytest pandas"
           # On Windows, we use a custom Docker image and CIBW_TEST_REQUIRES_WINDOWS
           # does not make sense because it would install dependencies in the host
           # rather than inside the Docker image
