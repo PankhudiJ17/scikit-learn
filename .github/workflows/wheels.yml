@@ -240,8 +240,6 @@ jobs:
             tar -xvpf Openblas_0.3.29_ppc64le.tar.gz -C /usr/local && \
             export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig && \
             bash {project}/build_tools/wheels/cibw_before_build.sh {project}
-          CIBW_MANYLINUX_PPC64LE_IMAGE: quay.io/pypa/manylinux_2_28_ppc64le
-          CIBW_SKIP: "*-musllinux_ppc64le" 
           CIBW_BEFORE_TEST: |
             yum install -y epel-release gcc gcc-c++ gcc-gfortran git wget pkgconfig cmake openssl-devel && \
             pip3 install scipy-openblas64
