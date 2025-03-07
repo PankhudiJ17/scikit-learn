@@ -154,7 +154,7 @@ jobs:
             python: 312
             platform_id: manylinux_ppc64le
             manylinux_image: manylinux_2_28
-            
+
           - os: linux.ppc64le
             python: 313
             platform_id: manylinux_ppc64le
@@ -268,7 +268,7 @@ jobs:
 
             export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig && \
             export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH && \
-            ln -sf /usr/local/lib/libopenblas.so.0 /usr/lib64/libopenblas.so.0 && \
+           # ln -sf /usr/local/lib/libopenblas.so.0 /usr/lib64/libopenblas.so.0 && \
             echo "before cibw_before_test.sh file"
             bash {project}/build_tools/wheels/cibw_before_test.sh
             echo "Finish"
