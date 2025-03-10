@@ -259,6 +259,7 @@ jobs:
             bash build_tools/wheels/build_wheels.sh
            
       - name: Build and test wheels
+        if: ${{ matrix.platform_id != 'manylinux_ppc64le' }}
         env:
           #CIBW_CONTAINER_ENGINE: podman
           #CIBW_CONTAINER_PRIVILEGED: true
