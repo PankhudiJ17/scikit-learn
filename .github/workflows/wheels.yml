@@ -233,6 +233,7 @@ jobs:
         env: 
           CIBW_CONTAINER_ENGINE: podman
           CIBW_CONTAINER_PRIVILEGED: true
+          CIBW_BUILD: cp${{ matrix.python }}-${{ matrix.platform_id }}
           CIBW_MANYLINUX_PPC64LE_IMAGE: quay.io/pypa/manylinux_2_28_ppc64le
           CIBW_SKIP: "*-musllinux_ppc64le"
           CIBW_ENVIRONMENT_PASS_LINUX: RUNNER_OS
@@ -251,12 +252,12 @@ jobs:
             export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH && \
             ln -sf /usr/local/lib/libopenblas.so.0 /usr/lib64/libopenblas.so.0 && \
             bash {project}/build_tools/wheels/cibw_before_test.sh  
-        run: |
-            sudo apt-get update
-            sudo apt-get install -y python3.11 python3.11-dev python3.11-venv
-            sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1
-            python3 --version 
-            bash build_tools/wheels/build_wheels.sh
+        run: bash build_tools/wheels/build_wheels.sh
+            # sudo apt-get update
+            # sudo apt-get install -y python3.11 python3.11-dev python3.11-venv
+            # sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.11 1
+            # python3 --version 
+            # bash build_tools/wheels/build_wheels.sh
            
       - name: Build and test wheels
         if: ${{ matrix.platform_id != 'manylinux_ppc64le' }}
