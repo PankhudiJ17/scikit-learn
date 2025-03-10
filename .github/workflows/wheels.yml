@@ -211,8 +211,9 @@ jobs:
       - name: Checkout scikit-learn
         uses: actions/checkout@v4
 
-
+       
       - name: Install Python 3.11
+        if:  ${{ matrix.platform_id == 'manylinux_ppc64le' }}
         run: |
           sudo apt-get update
           sudo apt-get install -y python3.11 python3.11-dev python3.11-venv
