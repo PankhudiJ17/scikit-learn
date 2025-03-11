@@ -239,6 +239,7 @@ jobs:
             export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH && \
             ln -sf /usr/local/lib/libopenblas.so.0 /usr/lib64/libopenblas.so.0 && \
             bash {project}/build_tools/wheels/cibw_before_test.sh 
+          CIBW_ENVIRONMENT_PASS_LINUX: RUNNER_OS   
           CIBW_TEST_REQUIRES: pytest pandas
           CIBW_TEST_COMMAND: bash {project}/build_tools/wheels/test_wheels.sh {project}  
 
