@@ -221,7 +221,8 @@ jobs:
         if: ${{ matrix.platform_id == 'manylinux_ppc64le' }}
         env:
           CIBW_CONTAINER_ENGINE: podman
-          CIBW_CONTAINER_PRIVILEGED: true   
+          CIBW_CONTAINER_PRIVILEGED: true  
+          CIBW_ENVIRONMENT: SKLEARN_SKIP_NETWORK_TESTS=1 
           CIBW_MANYLINUX_PPC64LE_IMAGE: quay.io/pypa/manylinux_2_28_ppc64le
           CIBW_SKIP: "*-musllinux_ppc64le"
           CIBW_BUILD: cp${{ matrix.python }}-${{ matrix.platform_id }}
